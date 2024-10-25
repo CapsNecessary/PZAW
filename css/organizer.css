@@ -1,0 +1,193 @@
+:root{
+	/* default lightMode */
+	--default-lightMode-text: #000;
+	--default-lightMode-background: #fff;
+	--default-lightMode-accent: #07f;
+	
+	/* default darkMode */
+	--default-darkMode-text: #fff;
+	--default-darkMode-background: #000;
+	--default-darkMode-accent: #f42;
+	
+	/* style 0 lightMode */
+	--style-0-lightMode-text: hsl(10, 100%, 35%);
+	--style-0-lightMode-background: hsl(270, 100%, 95%);
+	--style-0-lightMode-accent: hsl(235, 100%, 35%);
+	
+	/* style 0 darkMode */
+	--style-0-darkMode-text: hsl(0, 100%, 70%);
+	--style-0-darkMode-background: hsl(0, 100%, 0%);
+	--style-0-darkMode-accent: hsl(235, 100%, 75%);
+	
+	/* default */
+	--text: var(--default-lightMode-text);
+	--background: var(--default-lightMode-background);
+	--accent: var(--default-lightMode-accent);
+}
+
+.style-0{
+	/* style-0 */
+	--text: var(--style-0-lightMode-text);
+	--background: var(--style-0-lightMode-background);
+	--accent: var(--style-0-lightMode-accent);
+}
+
+@media (prefers-color-scheme: dark){
+	/* default */
+	:root{
+		--text: var(--default-darkMode-text);
+		--background: var(--default-darkMode-background);
+		--accent: var(--default-darkMode-accent);
+	}
+	
+	/* style-0 */
+	.style-0{
+		--text: var(--style-0-darkMode-text);
+		--background: var(--style-0-darkMode-background);
+		--accent: var(--style-0-darkMode-accent);
+	}
+}
+
+*{
+	border-radius: 0;
+	appearance: none;
+	border: 0 solid var(--text);
+	background: transparent; color: var(--text);
+	outline: 1px solid transparent;
+}
+
+:focus, :focus-visible{
+	outline: 1px solid currentColor;
+}
+
+
+html{
+	scrollbar-color: var(--text) var(--background);
+}
+
+body{
+	margin: 0;
+	font-family: Arial;
+	background: var(--background);
+	color: var(--text);
+	min-height: calc( 100svh - 10px );
+	padding: 5px;
+}
+
+input, button{
+	border: 1px;
+	color: var(--accent);
+	font-size: inherit;
+}
+
+button, input[type=button], input[type=checkbox], input[type=color], input[type^=date], input[type=file], input[type=radio], input[type=range], input[type=reset], input[type=submit], input[type=time]{ cursor: pointer; }
+
+input:read-only, input:disabled{ cursor: default; }
+
+input::selection{ background: var(--accent); }
+input::-moz-selection{ background: var(--accent); }
+
+header{
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: 1fr 1fr;
+	gap: 2px;
+	justify-content: space-between;
+	justify-items: end;
+	align-items: center;
+}
+
+main{
+	display: grid;
+	grid-template-columns: repeat( 7, auto );
+	gap: 5px
+}
+
+footer{
+	position: absolute;
+	bottom: 5px;
+	background: var(--background);
+	border: 1px solid var(--text);
+	width: calc( 100% - 22px );
+}
+
+dialog{ background: var(--background); }
+
+dialog::backdrop{
+	opacity: .75;
+	background: #000;
+}
+
+fieldset, dialog{border: 1px solid var(--text);}
+
+img, svg{
+	display: inline-block;
+	max-width: 100%;
+}
+
+header > h1{
+	position: static;
+	margin: 0;
+	grid-row: span 3;
+}
+
+header > *{
+	width: fit-content;
+}
+
+header, main{ width: calc( 100% - 10px ); }
+
+header, main, footer{ padding: 5px; }
+
+.different-month{opacity: .5;}
+
+/* .current-month{} */
+
+.day{
+	border: 1px solid var(--text);
+	padding: 5px;
+}
+
+.day-header {
+	border: 1px solid var(--text);
+	width: calc( 100% - 12px );
+	display: inline-block;
+	padding: 5px;
+	font-size: 1.25em;
+}
+
+/* .day-header *{outline: 1px solid red;} */
+
+.tasks{
+	padding: 10px;
+	font-size: .75em;
+}
+
+#user-svg{
+	height: 1lh;
+	border: 1px solid transparent;
+	margin-bottom: -.3lh;
+}
+
+#user-status{
+	border: 1px solid var(--text);
+	padding: 2px;
+}
+
+#login-popup{
+	width: fit-content;
+}
+
+#login-popup label{
+	width: 100%;
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: space-between;
+}
+
+#login-popup input{
+	text-align: right;
+}
+
+::selection{ background: var(--text); color: var(--background); }
+::-moz-selection{ background: var(--text); color: var(--background); }
