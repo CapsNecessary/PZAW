@@ -1,3 +1,4 @@
+<!-- Put this into site.php and then load it here -->
 <!DOCTYPE html>
 <html lang="pl">
 <head>

@@ -46,7 +46,14 @@ function updateDate(){
 			method: "post",
 			body: new FormData( form )
 		}
-	).then(e=>console.log(e));
+	).then(
+		e=>{
+			const clone = e.clone();
+			if( !e.ok ) console.log( e.staus );
+			else document.innerHTML = e.text();
+			console.log( clone.text() );
+		}
+	);
 }
 
 function logIn(){
@@ -68,7 +75,14 @@ function validateLogIn(){
 				method: "post",
 				body: new FormData( logInForm )
 			}
-		).then(e=>console.log(e));
+		).then(
+			e=>{
+				const clone = e.clone();
+				if( !e.ok ) console.log( e.staus );
+				else document.innerHTML = e.text();
+				console.log( clone.text() );
+			}
+		);
 		const dialog = document.getElementById("login-popup");
 		dialog.close();
 	}
