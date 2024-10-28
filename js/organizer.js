@@ -6,9 +6,14 @@ function _init(){
 	// fill authorizationForm
 	authorizationForm.method="POST";
 	const con=document.createElement("input");
-	con.name="con"
-	con.type="checkbox";
+	con.name="con";
+	con.id="con";
+	con.type="text";
+	con.value="on";
 	authorizationForm.appendChild( con );
+	const shownDate = document.getElementById( "shownDate" ).cloneNode( true );
+	shownDate.id = "shownDateCopy";
+	authorizationForm.appendChild( shownDate );
 	
 	const today = new Date().toJSON().slice( 0, 10 );
 	const currentDate = document.getElementById("currentDate");
@@ -21,6 +26,17 @@ function _init(){
 	
 	updateColorScheme();
 	window.matchMedia( " ( prefers-color-scheme: dark ) " ).addEventListener( "change", updateColorScheme );
+	
+	window.addEventListener( "beforeunload", ()=>{
+		const form = authorizationForm;
+		form.getElementById("con").value="terminated";
+		fetch(
+			form.action, {
+				method: "post",
+				body: new FormData( form )
+			}
+		)
+	} );
 	
 	const message = document.getElementById("message");
 	if( message.innerHTML != '' ) message.showModal();
@@ -43,9 +59,8 @@ function getColorScheme(){
 }
 
 function updateDate(){
-	const form = authorizationForm.cloneNode( true );
-	const shownDate = document.getElementById( "shownDateForm" );
-	// for()
+	const form = authorizationForm;
+	form.getElementById( "shownDateCopy" ).value = document.getElementById( "shownDate" ).value;
 	fetch(
 		form.action, {
 			method: "post",

@@ -6,14 +6,17 @@
 		$shownDate = date( 'Y-m-d' );
 	}
 	else $shownDate = $_COOKIE[ "shownDate" ];
-	if( isSet( $_POST["CON"] ) ){
-		session_start();
-		$c=mysqli_connect( "localhost", "root", "", "organizer" );
-		if( isSet( $_POST[ "shownDate" ] ) ){
-			setcookie( "shownDate", $_POST[ "shownDate" ], time() +7 *24 *3600 *1000 );
-			$shownDate = $_POST[ "shownDate" ];
+	if( isSet( $_POST[ "con" ] ) ){
+		if( $_POST[ "con" ] == "on" ){	
+			session_start();
+			$c=mysqli_connect( "localhost", "root", "", "organizer" );
+			if( isSet( $_POST[ "shownDate" ] ) ){
+				setcookie( "shownDate", $_POST[ "shownDate" ], time() +7 *24 *3600 *1000 );
+				$shownDate = $_POST[ "shownDate" ];
+			}
+			mysqli_close( $c );
 		}
-		mysqli_close( $c );
+		else session_destroy();
 	}
 	else{	
 		include("head.php");
