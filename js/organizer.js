@@ -5,7 +5,10 @@ addEventListener( "DOMContentLoaded", _init );
 function _init(){
 	// fill authorizationForm
 	authorizationForm.method="POST";
-	
+	const con=document.createElement("input");
+	con.name="con"
+	con.type="checkbox";
+	authorizationForm.appendChild( con );
 	
 	const today = new Date().toJSON().slice( 0, 10 );
 	const currentDate = document.getElementById("currentDate");
@@ -40,7 +43,9 @@ function getColorScheme(){
 }
 
 function updateDate(){
-	const form = document.getElementById( "shownDateForm" );
+	const form = authorizationForm.cloneNode( true );
+	const shownDate = document.getElementById( "shownDateForm" );
+	// for()
 	fetch(
 		form.action, {
 			method: "post",
