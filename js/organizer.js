@@ -29,7 +29,7 @@ function _init(){
 	
 	window.addEventListener( "beforeunload", ()=>{
 		const form = authorizationForm;
-		form.getElementById("con").value="terminated";
+		form.querySelector("#con").value="terminated";
 		fetch(
 			form.action, {
 				method: "post",
@@ -90,18 +90,15 @@ function validateLogIn(){
 	else if( document.getElementById("password").value != document.getElementById("password_check").value ) document.getElementById("login-status").innerHTML="Hasła się nie zgadzają!";
 	else{
 		const logInForm = document.getElementById("login-form");
-		//edit
 		fetch(
 			logInForm.action, {
 				method: "post",
 				body: new FormData( logInForm )
 			}
 		).then(
-			e=>{
-				const clone = e.clone();
+			function (e){
 				if( !e.ok ) console.log( e.staus );
-				else document.innerHTML = e.text();
-				console.log( clone.text() );
+				e.text().then( (content)=>{document.querySelector("body").innerHTML = content;});
 			}
 		);
 		const dialog = document.getElementById("login-popup");

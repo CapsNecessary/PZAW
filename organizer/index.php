@@ -24,6 +24,8 @@
 	}
 	else{	
 		include("head.html");
+		print("<body class='style-0'>");
 		include("body.php");
+		print("</body>\n</html>");
 	}
 ?>
