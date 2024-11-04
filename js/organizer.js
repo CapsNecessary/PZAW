@@ -98,7 +98,7 @@ function validateLogIn(){
 		).then(
 			function (e){
 				if( !e.ok ) console.log( e.staus );
-				e.text().then( (content)=>{document.querySelector("body").innerHTML = content;});
+				e.text().then( (content)=>{ document.querySelector("body").innerHTML = content; });
 			}
 		);
 		const dialog = document.getElementById("login-popup");
