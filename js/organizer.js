@@ -90,6 +90,7 @@ function validateLogIn(){
 	else if( document.getElementById("password").value != document.getElementById("password_check").value ) document.getElementById("login-status").innerHTML="Hasła się nie zgadzają!";
 	else{
 		const logInForm = document.getElementById("login-form");
+		//edit
 		fetch(
 			logInForm.action, {
 				method: "post",

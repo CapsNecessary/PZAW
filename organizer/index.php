@@ -19,10 +19,11 @@
 			}
 			mysqli_close( $c );
 		}
+		else if( $_POST[ "con" ] == "log" ) include("body.php");
 		else session_destroy();
 	}
 	else{	
-		include("head.php");
+		include("head.html");
 		include("body.php");
 	}
 ?>
