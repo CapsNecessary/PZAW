@@ -13,11 +13,7 @@
 				<?php print( "<input id='shownDate' name='shownDate' type='date' value='$shownDate' onchange='updateDate()'>" ); ?>
 			</label>
 		</form>
-		<?php
-			$user="";
-			$message="";
-			$password="";
-			
+		<?php			
 			if( isSet( $_POST[ "username" ] ) && $_POST[ "username" ] != ''){
 				$user=$_POST[ "username" ];
 				$password=$_POST[ "password" ];

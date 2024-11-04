@@ -1,6 +1,9 @@
 <?php
 	date_default_timezone_set( 'Europe/Warsaw' );
 	$shownDate;
+	$user="";
+	$message="";
+	$password="";
 	if( !isSet( $_COOKIE[ "shownDate" ] ) ){
 		setcookie( "shownDate", date( 'Y-m-d' ), time() +7 *24 *3600 *1000 );
 		$shownDate = date( 'Y-m-d' );
