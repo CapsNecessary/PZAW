@@ -32,7 +32,6 @@ CREATE TABLE `entries` (
   `user_id` int(11) NOT NULL,
   `date` date NOT NULL,
   `addition_date` datetime NOT NULL,
-  `month` int(11) NOT NULL,
   `title` tinytext NOT NULL,
   `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
