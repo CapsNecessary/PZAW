@@ -28,8 +28,14 @@
 					</label>
 					<div class='tasks'>
 			");
-			if($user != '') for( $i=0; $i<sizeof( $daysToDisplay ); $i++ ){
-				
+			if($user != ''){
+				$q = mysqli_query( $q, "SELECT `id` FROM `users` WHERE user='$user'")
+				$id = mysqli_fetch_row( $q )[ 0 ];
+				for( $i=0; $i<sizeof( $daysToDisplay ); $i++ ){
+					$day = $dateOfThisDay[ $i ];
+					$q = mysqli_query( $q, "SELECT `addition_date`, `title`, `content` FROM `entries` WHERE date='$day' and user_id='$id';");
+					// change
+				};
 			};
 			print("
 						<button onclick='addTask(`$dateOfThisDay`)' type='button'>+addTask</button>
