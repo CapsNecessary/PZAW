@@ -139,6 +139,8 @@ header, main{ width: calc( 100% - 10px ); }
 
 header, main, footer{ padding: 5px; }
 
+h1, h2, h3, h4, h5, h6{ margin: 0; }
+
 .different-month{opacity: .5;}
 
 /* .current-month{} */

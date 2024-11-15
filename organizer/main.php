@@ -22,19 +22,31 @@
 			$dateOfThisDay = $daysToDisplay[$i];
 			print("
 				<form class='day $class' method='POST' id='$dateOfThisDay'>
-					<label class='day-header'>
-						<span>Data:</span>
-						<input type='date' name='$dateOfThisDay' readonly value='$dateOfThisDay'>
-					</label>
+					<h2 class='day-header'>
+						<label>
+							<span>Data:</span>
+							<input type='date' name='$dateOfThisDay' readonly value='$dateOfThisDay'>
+						</label>	
+					</h2>
 					<div class='tasks'>
 			");
 			if($user != ''){
-				$q = mysqli_query( $q, "SELECT `id` FROM `users` WHERE user='$user'")
+				$q = mysqli_query( $c, "SELECT `id` FROM `users` WHERE user='$user'");
 				$id = mysqli_fetch_row( $q )[ 0 ];
 				for( $i=0; $i<sizeof( $daysToDisplay ); $i++ ){
-					$day = $dateOfThisDay[ $i ];
-					$q = mysqli_query( $q, "SELECT `addition_date`, `title`, `content` FROM `entries` WHERE date='$day' and user_id='$id';");
-					// change
+					$day = $dateOfThisDay;
+					$q = mysqli_query( $c, "SELECT `addition_date`, `title`, `content` FROM `entries` WHERE 'date'='$day' and 'user_id'='$id';");
+					for( $j=0; $q->num_rows<$j; $j++ ){
+						$r = mysqli_fetch_row( $q );
+						$addDate=$r[0];
+						$title=$r[0];
+						$content=$r[0];
+						print(
+						"<div class='task'>
+							<h3>$title<h3>
+							
+						");
+					}
 				};
 			};
 			print("
