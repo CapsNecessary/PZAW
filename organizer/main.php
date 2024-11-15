@@ -36,6 +36,11 @@
 				for( $i=0; $i<sizeof( $daysToDisplay ); $i++ ){
 					$day = $dateOfThisDay;
 					$q = mysqli_query( $c, "SELECT `addition_date`, `title`, `content` FROM `entries` WHERE 'date'='$day' and 'user_id'='$id';");
+					$editSVG; $delSVG;
+					if( $q->num_rows > 0 ){
+						$editSVG=inlineSVGFromFile( "../images/edit.svg" );
+						// $delSVG=inlineSVGFromFile( "../images/del.svg" );
+					}
 					for( $j=0; $q->num_rows<$j; $j++ ){
 						$r = mysqli_fetch_row( $q );
 						$addDate=$r[0];
@@ -44,7 +49,8 @@
 						print(
 						"<div class='task'>
 							<h3>$title<h3>
-							
+							<svg$editSVG
+						</div>
 						");
 					}
 				};

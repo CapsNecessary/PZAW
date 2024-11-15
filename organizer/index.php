@@ -28,4 +28,13 @@
 		print("</body>\n</html>");
 	}
 	mysqli_close( $c );
+	
+	inlineSVGFromFile( "../images/edit.svg" );
+	function inlineSVGFromFile( $svg ){
+		$con=file_get_contents( $svg );
+		$matches;
+		preg_match( '/(<path.*?\/>)/ms', $con, $matches, PREG_UNMATCHED_AS_NULL );
+		var_dump( $matches );
+		print_r( $matches );
+	}
 ?>
