@@ -25,7 +25,7 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.73851712"
-     inkscape:cx="245.76275"
+     inkscape:cx="247.11682"
      inkscape:cy="346.64058"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
@@ -41,7 +41,7 @@
      id="layer1">
     <path
        style="fill:#000000;stroke-width:0.264583"
-       d="M 85,85 75,60 15.760756,0 0,15.760756 60,75 Z"
+       d="M 85,85 75,60 16,0 0,16 60,75 Z"
        id="path113"
        sodipodi:nodetypes="cccccc" />
   </g>
