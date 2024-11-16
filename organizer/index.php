@@ -29,12 +29,18 @@
 	}
 	mysqli_close( $c );
 	
-	inlineSVGFromFile( "../images/edit.svg" );
 	function inlineSVGFromFile( $svg ){
-		$con=file_get_contents( $svg );
+		$con = file_get_contents( $svg );
 		$matches;
-		preg_match( '/(<path.*?\/>)/ms', $con, $matches, PREG_UNMATCHED_AS_NULL );
-		var_dump( $matches );
-		print_r( $matches );
+		preg_match( '/(<path.*?\/>)/ms', $con, $matches );
+		$path = preg_replace( '/ id.*/ms', "/>", $matches[0] );
+		$path = preg_replace( '/\#000000/ms', "var(--text)", $path );
+		preg_match( '/(?:viewBox=")(.*?)(?:")/ms', $con, $matches );
+		$viewbox = $matches[1];
+		preg_match( '/(.*)\/(.*?)\.svg/ms', $svg, $matches );
+		$class = $matches[2];
+		return "<svg class='$class'
+			viewBox='$viewbox'
+			preserveAspectRatio='xMidYMid'>$path</svg>";
 	}
 ?>

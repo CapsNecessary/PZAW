@@ -33,7 +33,6 @@
 			preserveAspectRatio="xMidYMid"
 		>
 			<path
-				id="path160"
 				style="fill: var(--text); stroke-width:0;"
 				d="M 15,5 C 9.5,5 5,9.5 5,15 c 0,2.5 1,5 3,7 -8,2 -8,8 -8,8 h 30 c 0,0 -1,-5.5 -8,-8 2,-2 3,-4 3,-7 C 25,9.5 20.5,5 15,5 Z"
 			/>
