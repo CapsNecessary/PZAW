@@ -70,7 +70,7 @@ function updateDate(){
 		e=>{
 			const clone = e.clone();
 			if( !e.ok ) console.log( e.staus );
-			else document.innerHTML = e.text();
+			e.text().then( (content)=>{ document.querySelector("body").innerHTML = content; });
 			console.log( clone.text() );
 		}
 	);
@@ -98,7 +98,7 @@ function validateLogIn(){
 		).then(
 			function (e){
 				if( !e.ok ) console.log( e.staus );
-				e.text().then( (content)=>{ document.querySelector("body").innerHTML = content; });
+				e.text().then( (content)=>{ document.querySelector( "body" ).innerHTML = content; });
 			}
 		);
 		const dialog = document.getElementById("login-popup");

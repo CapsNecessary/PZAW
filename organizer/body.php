@@ -43,7 +43,9 @@
 		<button onclick="logIn()">Zaloguj się</button>
 	</div>
 </header>
+<main>
 <?php include( "main.php" ) ?>
+</main>
 <footer>Praca Kacpra Koniecznego</footer>
 <dialog id="task">
 	<form method="post">
