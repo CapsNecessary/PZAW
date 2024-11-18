@@ -18,13 +18,13 @@
 	for( $i = 0; $i < sizeof( $daysToDisplay ); $i++ ){
 		$isThisDayInCurrentMonth = substr( $daysToDisplay[ $i ], 5, 2 ) == $month;
 		$class = $isThisDayInCurrentMonth ? "current-month" : "different-month";
-		$dateOfThisDay = $daysToDisplay[$i];
+		$day = $daysToDisplay[$i];
 		print("
-			<div class='day $class' method='POST' id='$dateOfThisDay'>
+			<div class='day $class' method='POST' id='$day'>
 				<h2 class='day-header'>
 					<label>
 						<span>Data:</span>
-						<input type='date' name='$dateOfThisDay' readonly value='$dateOfThisDay'>
+						<input type='date' name='$day' readonly value='$day'>
 					</label>	
 				</h2>
 				<div class='tasks'>
@@ -32,31 +32,30 @@
 		if($user != ''){
 			$q = mysqli_query( $c, "SELECT `id` FROM `users` WHERE user='$user'");
 			$id = mysqli_fetch_row( $q )[ 0 ];
-			$day = $dateOfThisDay;
-			$q = mysqli_query( $c, "SELECT `addition_date`, `title`, `content` FROM `entries` WHERE 'date'='$day' and 'user_id'='$id';");
-			var_dump($q);
+			$q = mysqli_query( $c, "SELECT `addition_date`, `title`, `content` FROM `entries` WHERE `date`='$day' and `user_id`='$id';");
 			$editSVG; $delSVG;
-			print("a");
-			if( $q->num_rows > 0 ){
+			if( $q->num_rows>0 ){
 				$editSVG=inlineSVGFromFile( "../images/edit.svg" );
 				$delSVG=inlineSVGFromFile( "../images/del.svg" );
 			};
-			for( $j=0; $q->num_rows<$j; $j++ ){
+			for( $j=0; $q->num_rows>$j; $j++ ){
 				$r = mysqli_fetch_row( $q );
 				$addDate=$r[0];
-				$title=$r[0];
-				$content=$r[0];
+				$title=$r[1];
+				$content=$r[2];
 				print(
 				"<div class='task'>
-					<h3>$title<h3>
-					$editSVG
-					$delSVG
+					<h3>$title</h3>
+					<button class='task-svg' onclick='editTask( $day )'>$editSVG</button>
+					<button class='task-svg' onclick='delTask( $day )'>$delSVG</button>
+					<textarea readonly>$content</textarea>
+					<input type='hidden' id='addDate-$day' value='$addDate'>
 				</div>
 				");
 			};
 		};
 		print("
-					<button onclick='addTask(`$dateOfThisDay`)' type='button'>+addTask</button>
+					<button onclick='addTask(`$day`)' type='button'>+addTask</button>
 				</div>
 			</div>
 		");

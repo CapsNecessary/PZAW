@@ -49,8 +49,13 @@
 <footer>Praca Kacpra Koniecznego</footer>
 <dialog id="task">
 	<form method="post">
-		
-		
+		<div class='task'>
+			<h3 id="task-title"></h3>
+			<button class='task-svg' onclick='editTask( $day )'><?php inlineSVGFromFile( "../images/edit.svg" ); ?></button>
+			<button class='task-svg' onclick='delTask( $day )'><?php inlineSVGFromFile( "../images/del.svg" ); ?></button>
+			<textarea></textarea>
+			<input type="hidden" name="" id="type">
+		</div>
 	</form>
 </dialog>
 <dialog id="login-popup">

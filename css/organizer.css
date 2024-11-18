@@ -78,7 +78,10 @@ input, button{
 	border: 1px;
 	color: var(--accent);
 	font-size: inherit;
+	padding: 0;
 }
+
+textarea{ resize: none; }
 
 button, input[type=button], input[type=checkbox], input[type=color], input[type^=date], input[type=file], input[type=radio], input[type=range], input[type=reset], input[type=submit], input[type=time]{ cursor: pointer; }
 
@@ -104,7 +107,7 @@ main{
 }
 
 footer{
-	position: absolute;
+	position: sticky;
 	bottom: 5px;
 	background: var(--background);
 	border: 1px solid var(--text);
@@ -163,6 +166,19 @@ h1, h2, h3, h4, h5, h6{ margin: 0; }
 .tasks{
 	padding: 10px;
 	font-size: .75em;
+}
+
+.task{
+	display: grid;
+	grid-template-columns: 1fr 1lh 1lh;
+}
+
+.task > textarea{
+	grid-column: span 3;
+}
+
+.edit, .del{
+	height: 1lh;
 }
 
 #user-svg{

@@ -33,7 +33,8 @@
 		$con = file_get_contents( $svg );
 		$matches;
 		preg_match( '/(<path.*?\/>)/ms', $con, $matches );
-		$path = preg_replace( '/ id.*/ms', "/>", $matches[0] );
+		$path = preg_replace( '/ id.*?".*?"/ms', "", $matches[0] );
+		$path = preg_replace( '/sodipodi.*\/>/ms', "/>", $path );
 		$path = preg_replace( '/\#000000/ms', "var(--text)", $path );
 		preg_match( '/(?:viewBox=")(.*?)(?:")/ms', $con, $matches );
 		$viewbox = $matches[1];
