@@ -106,10 +106,15 @@ function validateLogIn(){
 	}
 }
 
-function editTask(){
+function editTask( edit ){
+	const dialog = document.getElementById( "task" );
+	const task = edit.parentNode;
+	dialog.querySelectorAll()
+	// set del onclick to task
 	
 }
 
-function delTask(){
+function delTask( del ){
+	const task = del.parentNode;
 	
 }

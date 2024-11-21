@@ -51,8 +51,16 @@
 	<form method="post">
 		<div class='task'>
 			<h3 id="task-title"></h3>
-			<button class='task-svg' onclick='editTask( $day )'><?php inlineSVGFromFile( "../images/edit.svg" ); ?></button>
-			<button class='task-svg' onclick='delTask( $day )'><?php inlineSVGFromFile( "../images/del.svg" ); ?></button>
+			<?php
+				print( "<button class='task-svg' onclick='message( `Task is already being edited` )'> ");
+				print( inlineSVGFromFile( "../images/edit.svg" ) );
+				print( "</button>" );
+			?>
+			<?php
+				print( "<button class='task-svg' onclick='delTask()'> ");
+				print( inlineSVGFromFile( "../images/del.svg" ) );
+				print( "</button>" );
+			?>
 			<textarea></textarea>
 			<input type="hidden" name="" id="type">
 		</div>

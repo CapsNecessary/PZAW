@@ -46,8 +46,8 @@
 				print(
 				"<div class='task'>
 					<h3>$title</h3>
-					<button class='task-svg' onclick='editTask( $day )'>$editSVG</button>
-					<button class='task-svg' onclick='delTask( $day )'>$delSVG</button>
+					<button class='task-svg' onclick='editTask( this )'>$editSVG</button>
+					<button class='task-svg' onclick='delTask( this )'>$delSVG</button>
 					<textarea readonly>$content</textarea>
 					<input type='hidden' id='addDate-$day' value='$addDate'>
 				</div>

@@ -163,6 +163,8 @@ h1, h2, h3, h4, h5, h6{ margin: 0; }
 
 /* .day-header *{outline: 1px solid red;} */
 
+.del{ grid-column: 3 / 4; }
+
 .tasks{
 	padding: 10px;
 	font-size: .75em;
