@@ -105,3 +105,11 @@ function validateLogIn(){
 		dialog.close();
 	}
 }
+
+function editTask(){
+	
+}
+
+function delTask(){
+	
+}
