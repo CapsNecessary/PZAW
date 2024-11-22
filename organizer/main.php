@@ -45,7 +45,7 @@
 				$content=$r[2];
 				print(
 				"<div class='task'>
-					<h3 class='task-title'>$title</h3>
+					<h3><input class='task-title' type='text' readonly value='$title'/></h3>
 					<button class='task-svg' onclick='editTask( this )'>$editSVG</button>
 					<button class='task-svg' onclick='delTask( this )'>$delSVG</button>
 					<textarea class='task-content' readonly>$content</textarea>
