@@ -109,8 +109,21 @@ function validateLogIn(){
 function editTask( edit ){
 	const dialog = document.getElementById( "task" );
 	const task = edit.parentNode;
-	dialog.querySelectorAll()
-	// set del onclick to task
+	dialog.showModal();
+	dialog.querySelectorAll( ".del" )[0] .parentNode.onclick = `delTask( ${task} )`;
+	const day = task.parentNode.parentNode;
+	const date = day.querySelectorAll( '.date' )[0];
+	const title = day.querySelectorAll( '.task-title' )[0];
+	const content = day.querySelectorAll( '.task-content' )[0];
+	const addTime = day.querySelectorAll( '.task-addTime' )[0];
+	document.getElementById( "task-title" ).value = title.innerHTML;
+	document.getElementById( "task-content" ).value = content.value;
+	document.getElementById( "task-id" ).value = task;
+	document.getElementById( "task-date" ).value = date.value;
+	document.getElementById( "task-addTime" ).value = addTime.value;
+}
+
+function updateTask(){
 	
 }
 

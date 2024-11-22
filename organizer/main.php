@@ -24,7 +24,7 @@
 				<h2 class='day-header'>
 					<label>
 						<span>Data:</span>
-						<input type='date' name='$day' readonly value='$day'>
+						<input type='date' class='date' name='$day' readonly value='$day'>
 					</label>	
 				</h2>
 				<div class='tasks'>
@@ -45,11 +45,11 @@
 				$content=$r[2];
 				print(
 				"<div class='task'>
-					<h3>$title</h3>
+					<h3 class='task-title'>$title</h3>
 					<button class='task-svg' onclick='editTask( this )'>$editSVG</button>
 					<button class='task-svg' onclick='delTask( this )'>$delSVG</button>
-					<textarea readonly>$content</textarea>
-					<input type='hidden' id='addDate-$day' value='$addDate'>
+					<textarea class='task-content' readonly>$content</textarea>
+					<input type='hidden' class='task-addTime' value='$addDate'>
 				</div>
 				");
 			};

@@ -50,7 +50,7 @@
 <dialog id="task">
 	<form method="post">
 		<div class='task'>
-			<h3 id="task-title"></h3>
+			<h3><input type="text" id="task-title" onclick="updateTask()"></h3>
 			<?php
 				print( "<button class='task-svg' onclick='message( `Task is already being edited` )'> ");
 				print( inlineSVGFromFile( "../images/edit.svg" ) );
@@ -61,8 +61,17 @@
 				print( inlineSVGFromFile( "../images/del.svg" ) );
 				print( "</button>" );
 			?>
-			<textarea></textarea>
-			<input type="hidden" name="" id="type">
+			<textarea id='task-content' onclick="updateTask()"></textarea>
+			<label>
+				Data wydarzenia:
+				<input type="date" name="task-day" id="task-date" onclick="updateTask()">
+			</label>
+			<label>
+				Data dodania:
+				<input type="datetime-local" name="task-addTime" id="task-addTime" readonly>
+			</label>
+			<input type="hidden" name="type" id="type">
+			<input type="hidden" name="task-id" id="task-id">
 		</div>
 	</form>
 </dialog>

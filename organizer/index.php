@@ -1,5 +1,6 @@
 <?php
 	date_default_timezone_set( 'Europe/Warsaw' );
+	$addDatetime=date( 'Y-m-d H:i:s' );
 	$c=mysqli_connect( "localhost", "root", "", "organizer" );
 	$shownDate;
 	$user="";
