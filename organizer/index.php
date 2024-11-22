@@ -1,4 +1,11 @@
 <?php
+	define( 'DEFAULT_COOKIE_OPTION', [
+		'expires' => time() +7 *24 *3600 *1000,
+		'path' =>"/PZAW/organizer",
+		'secure' => true,
+		'samesite' => 'strict'
+	] );
+
 	date_default_timezone_set( 'Europe/Warsaw' );
 	$addDatetime=date( 'Y-m-d H:i:s' );
 	$c=mysqli_connect( "localhost", "root", "", "organizer" );
@@ -7,15 +14,16 @@
 	$message="";
 	$password="";
 	if( !isSet( $_COOKIE[ "shownDate" ] ) ){
-		setcookie( "shownDate", date( 'Y-m-d' ), time() +7 *24 *3600 *1000 );
+		setcookie( "shownDate", date( 'Y-m-d' ), DEFAULT_COOKIE_OPTION );
 		$shownDate = date( 'Y-m-d' );
 	}
 	else $shownDate = $_COOKIE[ "shownDate" ];
 	if( isSet( $_POST[ "con" ] ) ){
 		if( $_POST[ "con" ] == "on" ){	
 			session_start();
+			$_SESSION[ 'user' ] = $user;
 			if( isSet( $_POST[ "shownDate" ] ) ){
-				setcookie( "shownDate", $_POST[ "shownDate" ], time() +7 *24 *3600 *1000 );
+				setcookie( "shownDate", $_POST[ "shownDate" ], DEFAULT_COOKIE_OPTION );
 				$shownDate = $_POST[ "shownDate" ];
 			}
 		}

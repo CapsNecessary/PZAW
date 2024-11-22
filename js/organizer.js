@@ -1,19 +1,19 @@
-const authorizationForm = document.createElement("form");
+const templateForm = document.createElement("form");
 
 addEventListener( "DOMContentLoaded", _init );
 
 function _init(){
-	// fill authorizationForm
-	authorizationForm.method="POST";
+	// fill templateForm
+	templateForm.method="POST";
 	const con=document.createElement("input");
 	con.name="con";
 	con.id="con";
 	con.type="text";
 	con.value="on";
-	authorizationForm.appendChild( con );
+	templateForm.appendChild( con );
 	const shownDate = document.getElementById( "shownDate" ).cloneNode( true );
 	shownDate.id = "shownDateCopy";
-	authorizationForm.appendChild( shownDate );
+	templateForm.appendChild( shownDate );
 	
 	const today = new Date().toJSON().slice( 0, 10 );
 	const currentDate = document.getElementById("currentDate");
@@ -28,7 +28,7 @@ function _init(){
 	window.matchMedia( " ( prefers-color-scheme: dark ) " ).addEventListener( "change", updateColorScheme );
 	
 	window.addEventListener( "beforeunload", ()=>{
-		const form = authorizationForm;
+		const form = templateForm;
 		form.querySelector("#con").value="terminated";
 		fetch(
 			form.action, {
@@ -59,7 +59,7 @@ function getColorScheme(){
 }
 
 function updateDate(){
-	const form = authorizationForm;
+	const form = templateForm;
 	form.getElementById( "shownDateCopy" ).value = document.getElementById( "shownDate" ).value;
 	fetch(
 		form.action, {
@@ -83,6 +83,7 @@ function logIn(){
 
 function addTask( day ){
 	console.log(day);
+	// editTask();
 }
 
 function validateLogIn(){
@@ -109,17 +110,21 @@ function validateLogIn(){
 function editTask( edit ){
 	const dialog = document.getElementById( "task" );
 	const task = edit.parentNode;
-	dialog.showModal();
 	const day = task.parentNode.parentNode;
-	const tasks=day.querySelectorAll( ".task" );
-	let i=0;
-	for( ; i<tasks.length; i++ ) if( tasks[i] == task ) break;
+	
+	dialog.showModal();
+	
 	const date = day.querySelectorAll( '.date' )[0];
-	const taskAnchor = `document.querySelectorAll( '#${ date.value } task' )[${ i }]`;
-	dialog.querySelectorAll( ".del" )[0] .parentNode.onclick = `delTask( ${ taskAnchor } )`;
 	const title = day.querySelectorAll( '.task-title' )[0];
 	const content = day.querySelectorAll( '.task-content' )[0];
 	const addTime = day.querySelectorAll( '.task-addTime' )[0];
+	
+	let i=0;
+	const tasks=day.querySelectorAll( ".task" );
+	for( ; i<tasks.length; i++ ) if( tasks[i] == task ) break;
+	const taskAnchor = `document.querySelectorAll( '#${ date.value } task' )[${ i }]`;
+	dialog.querySelectorAll( ".del" )[0] .parentNode.onclick = `delTask( ${ taskAnchor } )`;
+	
 	document.getElementById( "task-title" ).value = title.value;
 	document.getElementById( "task-content" ).value = content.value;
 	document.getElementById( "task-id" ).value = task;
@@ -128,10 +133,13 @@ function editTask( edit ){
 }
 
 function updateTask(){
-	
+	// ajax to update task
 }
 
 function delTask( del ){
 	const task = del.parentNode;
+	task.remove();
+	
+	// ajax to drop task
 	
 }

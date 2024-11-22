@@ -32,7 +32,7 @@
 		if($user != ''){
 			$q = mysqli_query( $c, "SELECT `id` FROM `users` WHERE user='$user'");
 			$id = mysqli_fetch_row( $q )[ 0 ];
-			$q = mysqli_query( $c, "SELECT `addition_date`, `title`, `content` FROM `entries` WHERE `date`='$day' and `user_id`='$id';");
+			$q = mysqli_query( $c, "SELECT `addition_date`, `title`, `content`, `id` FROM `entries` WHERE `date`='$day' and `user_id`='$id';");
 			$editSVG; $delSVG;
 			if( $q->num_rows>0 ){
 				$editSVG=inlineSVGFromFile( "../images/edit.svg" );
@@ -43,6 +43,7 @@
 				$addDate=$r[0];
 				$title=$r[1];
 				$content=$r[2];
+				$taskId=$r[3];
 				print(
 				"<div class='task'>
 					<h3><input class='task-title' type='text' readonly value='$title'/></h3>
@@ -50,6 +51,7 @@
 					<button class='task-svg' onclick='delTask( this )'>$delSVG</button>
 					<textarea class='task-content' readonly>$content</textarea>
 					<input type='hidden' class='task-addTime' value='$addDate'>
+					<input type='hidden' class='task-id' value='$taskId'>
 				</div>
 				");
 			};
